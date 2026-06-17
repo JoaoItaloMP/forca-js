@@ -1,4 +1,16 @@
-const palavra = "PROGRAMACAO";
+const palavras = [
+    "PROGRAMACAO",
+    "JAVASCRIPT",
+    "ALGORITMO",
+    "COMPUTADOR",
+    "FACULDADE",
+    "DESENVOLVIMENTO",
+    "INTERNET",
+    "SERVIDOR"
+];
+
+const palavra =
+    palavras[Math.floor(Math.random() * palavras.length)];
 
 const palavraDiv = document.getElementById("palavra");
 const input = document.getElementById("letra");
