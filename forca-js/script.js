@@ -17,6 +17,7 @@ const input = document.getElementById("letra");
 const botao = document.getElementById("btnEnviar");
 const mensagem = document.getElementById("mensagem");
 const tentativasTexto = document.getElementById("tentativas");
+const reiniciar = document.getElementById("reiniciar");
 
 let letrasCorretas = [];
 let letrasErradas = [];
@@ -37,6 +38,38 @@ function atualizarPalavra() {
     }
 
     palavraDiv.textContent = exibicao;
+
+    verificarVitoria();
+}
+
+function verificarVitoria() {
+
+    const venceu = [...new Set(palavra)]
+        .every(letra => letrasCorretas.includes(letra));
+
+    if (venceu) {
+
+        mensagem.textContent = "🎉 Parabéns! Você venceu!";
+
+        encerrarJogo();
+    }
+}
+
+function verificarDerrota() {
+
+    if (tentativas <= 0) {
+
+        mensagem.textContent =
+            `❌ Você perdeu! A palavra era ${palavra}`;
+
+        encerrarJogo();
+    }
+}
+
+function encerrarJogo() {
+
+    input.disabled = true;
+    botao.disabled = true;
 }
 
 botao.addEventListener("click", () => {
@@ -72,7 +105,15 @@ botao.addEventListener("click", () => {
 
     atualizarPalavra();
 
+    verificarDerrota();
+
     input.value = "";
+});
+
+reiniciar.addEventListener("click", () => {
+
+    location.reload();
+
 });
 
 atualizarPalavra();
