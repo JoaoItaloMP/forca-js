@@ -1,11 +1,43 @@
 const palavra = "PROGRAMACAO";
 
 const palavraDiv = document.getElementById("palavra");
+const input = document.getElementById("letra");
+const botao = document.getElementById("btnEnviar");
 
-let exibicao = "";
+let letrasCorretas = [];
 
-for(let i = 0; i < palavra.length; i++){
-    exibicao += "_ ";
+function atualizarPalavra() {
+
+    let exibicao = "";
+
+    for(let letra of palavra){
+
+        if(letrasCorretas.includes(letra)){
+            exibicao += letra + " ";
+        }else{
+            exibicao += "_ ";
+        }
+
+    }
+
+    palavraDiv.textContent = exibicao;
 }
 
-palavraDiv.textContent = exibicao;
+botao.addEventListener("click", () => {
+
+    const tentativa = input.value.toUpperCase();
+
+    if(
+        tentativa &&
+        palavra.includes(tentativa) &&
+        !letrasCorretas.includes(tentativa)
+    ){
+        letrasCorretas.push(tentativa);
+    }
+
+    atualizarPalavra();
+
+    input.value = "";
+});
+
+atualizarPalavra();
