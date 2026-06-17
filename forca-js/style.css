@@ -1,0 +1,31 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+}
+
+#palavra{
+    font-size:32px;
+    margin:20px;
+    letter-spacing:10px;
+}
+
+input{
+    padding:10px;
+}
+
+button{
+    padding:10px 20px;
+}
